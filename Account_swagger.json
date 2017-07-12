@@ -1,0 +1,307 @@
+{
+    "swagger": "2.0",
+    "paths": {
+        "/userdetails": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "loginName",
+                        "in": "query",
+                        "required": true,
+                        "type": "string",
+                        "description": "userName of a account"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string",
+                        "description": "Bearer token"
+                    }
+                ],
+                "summary": "This API is used for getting the details of the account entity with login name. Exchange account can fetch details of accounts under any hierarchy. Obsolete accounts will be visible only to exchange administrators",
+                "produces": [
+                    "application/json"
+                ],
+                "description": "Sample Output : \n{\n  \"id\": \"ee287e7b-73c4-48be-a3f0-961c9753a200\",\n  \"userName\": \"cimuser\",\n  \"name\": \"Delhi Cim User\",\n  \"emailAddress\": \"cimuser@delhi.com\",\n  \"phoneNumber\": \"9999999999\",\n  \"correspondenceAddress\": {\n    \"city\": \"Delhi\",\n    \"street\": \"MG Road\",\n    \"state\": \"Delhi\",\n    \"postalCode\": \"560000\",\n    \"country\": \"India\"\n  },\n   \"updatedOn\": \"2017-04-20T15:23:32\",\n   \"createdOn\": \"2017-04-20T15:23:32\",\n  \"state\": \"ACTIVE\"\n}",
+                "x-auth-type": "Application & Application User",
+                "x-throttling-tier": "Unlimited"
+            }
+        },
+        "/{accountId}": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "accountId",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "description": "Account ID"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string",
+                        "description": "Bearer token"
+                    }
+                ],
+                "summary": "This API is used for getting the details of the account entity by a account ID. Exchange account can fetch details of accounts under any hierarchy. Obsolete accounts will be visible only to exchange administrators.",
+                "consumes": [
+                    ""
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "description": "Sample Output : {\n  \"id\": \"ee287e7b-73c4-48be-a3f0-961c9753a200\",\n  \"userName\": \"cimuser\",\n  \"name\": \"Delhi Cim User\",\n  \"emailAddress\": \"cimuser@delhi.com\",\n  \"phoneNumber\": \"9999999999\",\n  \"correspondenceAddress\": {\n    \"city\": \"Delhi\",\n    \"street\": \"MG Road\",\n    \"state\": \"Delhi\",\n    \"postalCode\": \"560000\",\n    \"country\": \"India\"\n  },  \n  \"updatedOn\": \"2017-04-20T15:23:32\",\n\"createdOn\": \"2017-04-20T15:23:32\",\n  \"state\": \"ACTIVE\"\n}\n",
+                "x-auth-type": "Application & Application User",
+                "x-throttling-tier": "Unlimited"
+            }
+        },
+        "/onboard": {
+            "post": {
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "Payload",
+                        "description": "Request Body Example  : { \t\"account\": { \t\t\"emailAddress\": \"cimuser@delhi.com\", \t\t\"name\": \"Delhi Cim User\", \t\t\"phoneNumber\": \"9999999999\", \t\t\"state\": \"ACTIVE\", \t\t\"password\": \"Cisco_123\", \t\t\"userName\": \"cimuser\", \t\t\"correspondenceAddress\": { \t\t\t\"city\": \"Delhi\", \t\t\t\"country\": \"India\", \t\t\t\"postalCode\": \"560000\", \t\t\t\"state\": \"Delhi\", \t\t\t\"street\": \"MG Road\" \t\t} \t} }",
+                        "required": true,
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "payload": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "query",
+                        "required": true,
+                        "type": "string",
+                        "description": "Bearer token"
+                    }
+                ],
+                "summary": "This API is used for on boarding a new account with the group IDs.",
+                "produces": [
+                    "application/json"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "Sample Output : {\n  \"account\": {\n    \"id\": \"ee287e7b-73c4-48be-a3f0-961c9753a200\",\n    \"userName\": \"cimuser\",\n    \"name\": \"Delhi Cim User\",\n    \"emailAddress\": \"cimuser@delhi.com\",\n    \"phoneNumber\": \"9999999999\",\n    \"correspondenceAddress\": {\n      \"city\": \"Delhi\",\n      \"street\": \"MG Road\",\n      \"state\": \"Delhi\",\n      \"postalCode\": \"560000\",\n      \"country\": \"India\"\n    }, \n    \"updatedOn\": \"2017-04-20T15:23:32\",\n\"createdOn\": \"2017-04-20T15:23:32\",\n    \"state\": \"ACTIVE\"\n  }\n}\n",
+                "x-auth-type": "Application & Application User",
+                "x-throttling-tier": "Unlimited"
+            }
+        },
+        "/edit/{accountId}": {
+            "post": {
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "accountId",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "description": "Account ID"
+                    },
+                    {
+                        "name": "Payload",
+                        "description": "Request Body Example : { \t\"account\": { \t\t\"id\":\"ee287e7b-73c4-48be-a3f0-961c9753a200\", \t\t\"emailAddress\": \"cimuser@gmail.com\", \t\t\"name\": \"Delhi Cim User\", \t\t\"phoneNumber\": \"9999988888\", \t\t\"state\": \"ACTIVE\", \t\t\"userName\": \"cimuser\", \t\t\"correspondenceAddress\": { \t\t\t\"city\": \"Delhi\", \t\t\t\"country\": \"India\", \t\t\t\"postalCode\": \"560000\", \t\t\t\"state\": \"NewDelhi\", \t\t\t\"street\": \"MG Road\" \t\t} \t} }",
+                        "required": true,
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "payload": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string",
+                        "description": "Bearer token "
+                    }
+                ],
+                "summary": "This API is used for updating the account details along with groups.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "x-auth-type": "Application & Application User",
+                "x-throttling-tier": "Unlimited",
+                "description": "Sample Output : {\n  \"account\": {\n    \"id\": \"ee287e7b-73c4-48be-a3f0-961c9753a200\",\n    \"userName\": \"cimuser\",\n    \"name\": \"Delhi Cim User\",\n    \"emailAddress\": \"cimuser@delhi.com\",\n    \"phoneNumber\": \"9999999999\",\n    \"correspondenceAddress\": {\n      \"city\": \"Delhi\",\n      \"street\": \"MG Road\",\n      \"state\": \"Delhi\",\n      \"postalCode\": \"560000\",\n      \"country\": \"India\"\n    },    \n    \"updatedOn\": \"2017-04-20T15:23:32\",\n\"createdOn\": \"2017-04-20T15:23:32\",\n    \"state\": \"ACTIVE\"\n  }\n}\n"
+            }
+        },
+        "/passphrase/{userName-with-tenant-domain}": {
+            "post": {
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "userName-with-tenant-domain",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "description": "Example for user name with domain : cimuser@delhi.com"
+                    },
+                    {
+                        "name": "Payload",
+                        "description": "Request Body Example: { \"oldPassword\":\"Cisco_123\", \"newPassword\":\"Test@12345\" }",
+                        "required": true,
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "payload": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string",
+                        "description": "Bearer token"
+                    }
+                ],
+                "summary": "This API is used for changing the user password.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "description": "Sample Output : {\n  \"message\": \"success\",\n  }\n",
+                "x-auth-type": "Application & Application User",
+                "x-throttling-tier": "Unlimited"
+            }
+        },
+        "/offboard/{accountId}": {
+            "delete": {
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "accountId",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "description": "Account ID"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string",
+                        "description": "Bearer token"
+                    }
+                ],
+                "summary": "This API is used for off-boarding the account from SDP and associated sub-systems.",
+                "description": "Sample Output : {“message” : \"Deleted Successfully\" }",
+                "produces": [
+                    "application/json"
+                ],
+                "consumes": [
+                    ""
+                ],
+                "x-auth-type": "Application & Application User",
+                "x-throttling-tier": "Unlimited"
+            }
+        },
+        "/": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "summary": "This API is used for getting all the active account information.",
+                "description": "Sample Output : {\n  \n  \"totalResults\": 11,\n  \"Resources\": [\n    {\n      \"id\": \"1c9a8f40-ccf5-4fa2-a20c-0ccaa9c8a4d6\",\n      \"userName\": \"cdpadmin\",\n      \"meta\": {\n        \"lastModified\": \"2017-04-19T19:00:34\",\n        \"created\": \"2017-04-19T19:00:34\"\n      }\n    },\n    {\n      \"id\": \"2e9829fe-da5c-4447-b83e-ced6c2551d32\",\n      \"userName\": \"delhicustomer\",\n      \"meta\": {\n        \"lastModified\": \"2017-04-18T16:24:15\",\n        \"created\": \"2017-04-18T16:24:15\"\n      }\n    },\n    {\n      \"id\": \"e71586f6-82c3-4606-bc44-51138aa02518\",\n      \"userName\": \"user1\",\n      \"meta\": {\n        \"lastModified\": \"2017-04-20T16:14:28\",\n        \"created\": \"2017-04-19T14:11:14\"\n      }\n    }\n  ]\n}\n",
+                "consumes": [
+                    ""
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string",
+                        "description": "Bearer token"
+                    }
+                ],
+                "x-auth-type": "Application & Application User",
+                "x-throttling-tier": "Unlimited"
+            }
+        },
+        "/validate": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "description": "Sample Output : {\n  \"id\": \"e17b19a1-53b8-43ab-b7bb-de732370cd33\",\n  \"userName\": \"Superadmin\",\n  \"name\": \"Superadmin\",\n  \"tenant\": \"delhi.com\",\n  \"emailAddress\": \"Superadmin@delhi.com\",\n  \"createdOn\": \"2017-04-19T13:34:14\",\n  \"updatedOn\": \"2017-04-20T17:58:25\",\n  \"state\": \"ACTIVE\",\n  \n}\n",
+                "produces": [
+                    "application/json"
+                ],
+                "consumes": [
+                    ""
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string",
+                        "description": "Bearer token "
+                    }
+                ],
+                "summary": "This API is used for getting the user information.",
+                "x-auth-type": "Application & Application User",
+                "x-throttling-tier": "Unlimited"
+            }
+        }
+    },
+    "info": {
+        "title": "Accounts API",
+        "version": "v1"
+    }
+}

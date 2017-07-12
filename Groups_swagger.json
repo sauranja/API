@@ -1,0 +1,373 @@
+{
+    "swagger": "2.0",
+    "paths": {
+        "/groupName": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "groupName",
+                        "in": "query",
+                        "required": true,
+                        "type": "string",
+                        "description": "Group Name"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string",
+                        "description": "Bearer Token"
+                    },
+                    {
+                        "name": "Content-Type",
+                        "in": "header",
+                        "required": true,
+                        "type": "string",
+                        "description": "Application/json"
+                    }
+                ],
+                "summary": "This API is used for getting the list of group definitions owned by the logged in account.",
+                "produces": [
+                    "application/json"
+                ],
+                "consumes": [
+                    ""
+                ],
+                "description": "Sample Output : {\n  \"id\": \"8d38bca9-2c79-402e-b646-299d1e40f1f0\",\n  \"updatedOn\": \"2017-04-21T11:10:04\",\n  \"name\": \"CDPGroup\",\n  \"displayName\": \"CDPGroup\",\n  \"groupOwnerId\": \"8d38bca9-2c79-402e-b646-299d1e40f1f0\",\n  \"account\": [\n    {\n      \"id\": \"f952d151-1025-45aa-bebf-3e8f1bb3d69e\",\n      \"userName\": \"cimuser\",\n      \"state\": \"ACTIVE\"\n    }\n  ],\n  \"created\": \"2017-04-21T11:10:04\"\n}\n",
+                "x-auth-type": "Application & Application User",
+                "x-throttling-tier": "Unlimited"
+            }
+        },
+        "/{groupId}": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "groupId",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "description": "Group ID"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string",
+                        "description": "Bearer Token"
+                    },
+                    {
+                        "name": "Content-Type",
+                        "in": "header",
+                        "required": true,
+                        "type": "string",
+                        "description": "Application/json"
+                    }
+                ],
+                "summary": "This API is used for getting group definitions for the given group ID. The API will return any group and the accounts associated to it irrespective of owners, and returns null if no group is found.",
+                "produces": [
+                    "application/json"
+                ],
+                "consumes": [
+                    ""
+                ],
+                "description": "Sample Output : {\n\t\"id\": \"8d38bca9-2c79-402e-b646-299d1e40f1f0\",\n\t\"updatedOn\": \"2017-04-21T11:10:04\",\n\t\"name\": \"CDPGroup\",\n\t\"displayName\": \"CDPGroup\",\n\t\"groupOwnerId\": \"8d38bca9-2c79-402e-b646-299d1e40f1f0\",\n\t\"account\": [{\n\t\t\"id\": \"f952d151-1025-45aa-bebf-3e8f1bb3d69e\",\n\t\t\"userName\": \"cimuser\",\n\t\t\"state\": \"ACTIVE\"\n\t}],\n\t\"created\": \"2017-04-21T11:10:04\"\n}",
+                "x-auth-type": "Application & Application User",
+                "x-throttling-tier": "Unlimited"
+            },
+            "delete": {
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "groupId",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "description": "Group ID"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string",
+                        "description": "Bearer Token"
+                    },
+                    {
+                        "name": "Content-Type",
+                        "in": "header",
+                        "required": true,
+                        "type": "string",
+                        "description": "Application/json"
+                    }
+                ],
+                "description": "Sample Output : {  \"message\": \"Deleted Successfully\" }",
+                "consumes": [
+                    ""
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "This API is used for deleting a group definition.",
+                "x-auth-type": "Application & Application User",
+                "x-throttling-tier": "Unlimited"
+            }
+        },
+        "/{goupId}": {
+            "put": {
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "goupId",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "description": "Group ID"
+                    },
+                    {
+                        "name": "Payload",
+                        "description": "Request Body Example : {   \"displayName\":\"CDP Group Modified\",   \"members\":[{\"value\":\"f952d151-1025-45aa-bebf-3e8f1bb3d69e\",\"display\":\"cimuser\"},   {\"value\":\"e71586f6-82c3-4606-bc44-51138aa02518\",\"display\":\"user1\"}] }",
+                        "required": false,
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "payload": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string",
+                        "description": "Bearer Token"
+                    },
+                    {
+                        "name": "Content-Type",
+                        "in": "header",
+                        "required": true,
+                        "type": "string",
+                        "description": "Application/json"
+                    }
+                ],
+                "summary": "This API is used for updating the group definition with a group ID. And retains the members only which are given in the payload. ",
+                "produces": [
+                    "application/json"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "Sample Output : {\n\t\"id\": \"8d38bca9-2c79-402e-b646-299d1e40f1f0\",\n\t\"updatedOn\": \"2017-04-21T12:20:29\",\n\t\"name\": \"PRIMARY/CDP Group Modified\",\n\t\"displayName\": \"PRIMARY/CDP Group Modified\",\n\t\"groupOwnerId\": \"8d38bca9-2c79-402e-b646-299d1e40f1f0\",\n\t\"account\": [{\n\t\t\"id\": \"e71586f6-82c3-4606-bc44-51138aa02518\",\n\t\t\"userName\": \"user1\",\n\t\t\"state\": \"ACTIVE\"\n\t},\n\t{\n\t\t\"id\": \"f952d151-1025-45aa-bebf-3e8f1bb3d69e\",\n\t\t\"userName\": \"cimuser\",\n\t\t\"state\": \"ACTIVE\"\n\t}],\n\t\"created\": \"2017-04-21T11:10:04\"\n}",
+                "x-auth-type": "Application & Application User",
+                "x-throttling-tier": "Unlimited"
+            }
+        },
+        "/{groupId}/accounts": {
+            "post": {
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "groupId",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "description": "Group ID"
+                    },
+                    {
+                        "name": "Payload",
+                        "description": "Request Body Examle : { \t\"members\" : [ \t{\"display\" : \"kuser1\", \"value\" :\"d63213a6-1505-4ee6-9f9c-de78b2ac87c0\"}, \t{\"display\":\"kuser2\", \"value\":\"7245330c-d05a-4bdd-b482-be513f80820d\"\t} ] }",
+                        "required": true,
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "payload": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string",
+                        "description": "Bearer Token"
+                    },
+                    {
+                        "name": "Content-Type",
+                        "in": "header",
+                        "required": true,
+                        "type": "string",
+                        "description": "Application/json"
+                    }
+                ],
+                "summary": "This API is used for associating accounts to a specific group. The accounts can be associated to a specific group only by the group owner.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "description": "Sample Ouyput :  {\"message\": \"Successfully assigned accounts to group.\"  }",
+                "x-auth-type": "Application & Application User",
+                "x-throttling-tier": "Unlimited"
+            }
+        },
+        "/{groupId}/accounts/{accountIds}": {
+            "delete": {
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "groupId",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "description": "Group ID"
+                    },
+                    {
+                        "name": "accountIds",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "description": "Account ids can be multiple by comma separated, Examle : d63213a6-1505-4ee6-9f9c-de78b2ac87c0,7245330c-d05a-4bdd-b482-be513f80820d "
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string",
+                        "description": "Bearer Token"
+                    },
+                    {
+                        "name": "Content-Type",
+                        "in": "header",
+                        "required": true,
+                        "type": "string",
+                        "description": "Application/json"
+                    }
+                ],
+                "summary": "This API is used for disassociating one or more accounts from a specific group.",
+                "consumes": [
+                    ""
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "description": "Sample Output : {\n  \"message\": \"Accounts removed from group successfully.\"\n}",
+                "x-auth-type": "Application & Application User",
+                "x-throttling-tier": "Unlimited"
+            }
+        },
+        "/": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "x-auth-type": "Application & Application User",
+                "x-throttling-tier": "Unlimited",
+                "summary": "This API will get all groups",
+                "description": "Sample Output : {\n  \"totalResults\": 4,\n  \"Resources\": [\n    {\n      \"id\": \"3d070b15-96bb-44e8-ad98-979e828f5928\",\n      \"displayName\": \"PRIMARY/CDP_ADMIN\",\n      \"meta\": {\n        \"lastModified\": \"2017-05-09T16:28:01\",\n        \"created\": \"2017-05-09T16:28:01\"\n      }\n    },\n    {\n      \"id\": \"118f7235-8efe-4e81-a63f-3a4d18f87bc2\",\n      \"displayName\": \"PRIMARY/CDP_OPERATOR\",\n      \"meta\": {\n        \"lastModified\": \"2017-05-09T17:15:42\",\n        \"created\": \"2017-05-09T17:15:42\"\n      }\n    },\n    {\n      \"id\": \"a89eea43-bdbc-46d6-9854-a9b77c885db4\",\n      \"displayName\": \"PRIMARY/DEVOPS_ADMIN\",\n      \"meta\": {\n        \"lastModified\": \"2017-05-09T12:52:10\",\n        \"created\": \"2017-05-09T12:52:10\"\n      }\n    },\n    {\n      \"id\": \"5ac23767-4ace-4519-9f77-7035c996735a\",\n      \"displayName\": \"PRIMARY/SENSOR_CUSTOMER\",\n      \"meta\": {\n        \"lastModified\": \"2017-05-09T17:07:41\",\n        \"created\": \"2017-05-09T17:07:41\"\n      }\n    }\n  ]\n}",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string",
+                        "description": "Bearer Token"
+                    },
+                    {
+                        "name": "Content-Type",
+                        "in": "header",
+                        "required": true,
+                        "type": "string",
+                        "description": "Application/json"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ]
+            },
+            "post": {
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "Payload",
+                        "description": "Request Body Exmple : {\"displayName\": \"CDPGroup\"}",
+                        "required": true,
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "payload": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string",
+                        "description": "Bearer token"
+                    },
+                    {
+                        "name": "Content-Type",
+                        "in": "header",
+                        "required": true,
+                        "type": "string",
+                        "description": "Application/json"
+                    }
+                ],
+                "summary": "This API is used for creating a new Group definition with the given details.",
+                "description": "Sample Output : {  \"id\": \"8d38bca9-2c79-402e-b646-299d1e40f1f0\",\n  \"updatedOn\": \"2017-04-21T11:10:04\",\n  \"name\": \"CDPGroup\",\n  \"displayName\": \"CDPGroup\",\n  \"groupOwnerId\": \"8d38bca9-2c79-402e-b646-299d1e40f1f0\",\n  \"account\": [ {\"id\": \"f952d151-1025-45aa-bebf-3e8f1bb3d69e\",\n      \"userName\": \"cimuser\",\"state\": \"ACTIVE\"} ],\n  \"created\": \"2017-04-21T11:10:04\" }\n",
+                "x-auth-type": "Application & Application User",
+                "x-throttling-tier": "Unlimited",
+                "produces": [
+                    "application/json"
+                ],
+                "consumes": [
+                    "application/json"
+                ]
+            }
+        }
+    },
+    "info": {
+        "title": "CDP_Groups",
+        "version": "v1"
+    }
+}
